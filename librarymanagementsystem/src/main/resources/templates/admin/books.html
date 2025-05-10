@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <title>图书管理</title>
+</head>
+<body>
+<h1>图书管理 <a href="/logout">退出</a></h1>
+<div>总图书数：[[${totalBooks}]]</div>
+
+<!-- 搜索表单 -->
+<form th:action="@{/admin/books}" method="get">
+    <input type="text" name="keyword" placeholder="搜索书名或作者">
+    <button type="submit">搜索</button>
+</form>
+
+<!-- 图书表格 -->
+<table border="1">
+    <tr>
+        <th>书名</th>
+        <th>作者</th>
+        <th>分类</th>
+        <th>数量</th>
+        <th>操作</th>
+    </tr>
+    <tr th:each="book : ${books}">
+        <td th:text="${book.title}"></td>
+        <td th:text="${book.author}"></td>
+        <td th:text="${book.category.name}"></td>
+        <td th:text="${book.quantity}"></td>
+        <td>
+            <a th:href="@{/admin/books/delete/{id}(id=${book.id})}">删除</a>
+            <a th:href="@{/admin/books/edit/{id}(id=${book.id})}">编辑</a>
+        </td>
+    </tr>
+</table>
+
+<!-- 添加图书表单 -->
+<h2>添加新书</h2>
+<form th:action="@{/admin/books/add}" method="post">
+    <input type="text" name="title" placeholder="书名" required>
+    <input type="text" name="author" placeholder="作者" required>
+    <select name="category.id">
+        <option th:each="category : ${categories}"
+                th:value="${category.id}"
+                th:text="${category.name}"></option>
+    </select>
+    <input type="number" name="quantity" placeholder="数量" required>
+    <button type="submit">添加</button>
+</form>
+</body>
+</html>
