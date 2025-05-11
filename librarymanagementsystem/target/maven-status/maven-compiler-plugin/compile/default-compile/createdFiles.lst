@@ -1,0 +1,11 @@
+com\example\librarymanagementsystem\controller\AdminController.class
+com\example\librarymanagementsystem\controller\UserController.class
+com\example\librarymanagementsystem\model\Book.class
+com\example\librarymanagementsystem\repository\UserRepository.class
+com\example\librarymanagementsystem\model\User.class
+com\example\librarymanagementsystem\model\Category.class
+com\example\librarymanagementsystem\repository\BookRepository.class
+com\example\librarymanagementsystem\LibrarymanagementsystemApplication.class
+com\example\librarymanagementsystem\config\SecurityConfig.class
+com\example\librarymanagementsystem\repository\CategoryRepository.class
+com\example\librarymanagementsystem\controller\AuthController.class
